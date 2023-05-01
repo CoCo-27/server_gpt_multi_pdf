@@ -47,10 +47,6 @@ export const embedding = async (req, res) => {
     });
 
     const pineconeIndex = pinecone.Index(process.env.PINECONE_INDEX_NAME);
-    await pineconeIndex.delete1({
-      deleteAll: true,
-      namespace: 'coco',
-    });
 
     req.body.fileArray.forEach(async (item, index) => {
       const loader = fileLoad(item.filename);
